@@ -1,0 +1,130 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    background: url(//vlsu.ts-3.su/static/container_row2.jpg) center repeat;
+}
+
+header #nav {
+    box-shadow: 0 1px 5px 1px #777;
+    background: #f5eae4;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#nav .item {
+    text-decoration: none;
+    color: black;
+}
+
+    #nav .item:hover {
+        color: #8d4806;
+        transition: .25s;
+        text-shadow: 0 0 10px #c28244;
+    }
+li {
+    border-right: 1px solid #ccc;
+}
+.bd-none {
+    border: 0;
+}
+.content {
+    padding-bottom: 40px;
+}
+
+.btn {
+    border-radius: unset !important;
+}
+
+.new_item {
+    margin: 1rem 0;
+    color: inherit;
+    border: 0;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 15px 25px;
+    background: #fff1e4;
+}
+
+.editor {
+    transition: 1s;
+    position: fixed;
+    background: antiquewhite;
+    box-shadow: 1px 1px 10px 5px #8f7554;
+    padding: 15px;
+    display: none;
+    top: 15%;
+    margin-left: -11px !important;
+}
+.editor div {
+    background: #f6efe1;
+    padding: 10px;
+    border: 1px solid;
+    margin-top: -1px;
+}
+tr {
+    cursor: pointer;
+    background: #fffcf7;
+    box-shadow: 0px 0px 1px 0px #592b0c;
+    border-left: 1px solid transparent;
+}
+td {
+    padding: 10px;
+    border-right: 1px solid #f5ebdc;
+}
+
+.info_block {
+    background: #f6f2ed;
+    border: 1px solid #ede6da;
+    box-shadow: 0 0 10px 5px #f6f2ed;
+}
+
+.flex {
+    display: flex;
+}
+
+.box {
+    transition: .30s;
+    color: black;
+    margin: 10px;
+    background: #f6f2ed;
+    box-shadow: 0 0 5px 2px #e5dfd6;
+    width: 25%;
+    border: 1px solid #b39564;
+    text-decoration: none;
+    padding: 10px;
+}
+
+    .box:hover {
+        color: #8d4806;
+        background: #eeddcc;
+    }
+
+footer {
+    box-shadow: 0 1px 5px 1px #777;
+    background: #f7f2ed;
+}

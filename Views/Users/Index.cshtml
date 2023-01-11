@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<UsersModel>
+
+<a class="btn btn-success mt-2 mb-2" href="@Url.Action("Edit", "Users", new { id = 0 })">Добавить пользователя</a>
+<table>
+    <tr>
+        <td>Имя</td>
+        <td>Фамилия</td>
+        <td>Пол</td>
+        <td>Дата рождения</td>
+        <td>Статус</td>
+        <td>Почта</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr onclick="javascript:detailsOpen('details_@item.ID')">
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Gender</td>
+            <td>@item.Birthday</td>
+            <td>@item.Status</td>
+            <td>@item.Email</td>
+            <td><a class="btn btn-success" href="@Url.Action("UserOrders", "Orders", new { id = @item.ID })">История заказов</a></td>
+            <td><a class="btn btn-warning" href="@Url.Action("Delete", "Users", new { id = @item.ID })">Удалить</a></td>
+        </tr>
+        <div id="details_@item.ID" class="container mb-5 mt-3 editor" style="display: none">
+            <div>
+                <b>
+                    Идентификатор в базе: 
+                </b>
+                @item.ID
+            </div>
+            <div>
+                <b>
+                    Имя пользователя: 
+                </b>
+                @item.FirstName
+            </div>
+            <div>
+                <b>
+                    Фамилия пользователя: 
+                </b>
+                @item.LastName
+            </div>
+            <div>
+                <b>
+                    Пол пользователя: 
+                </b>
+                @item.Gender
+            </div>
+            <div>
+                <b>
+                    Дата рождения: 
+                </b>
+                @item.Birthday
+            </div>
+            <div>
+                <b>
+                    Дата регистрации: 
+                </b>
+                @item.CreateDate
+            </div>
+            <div>
+                <b>
+                    Последний вход: 
+                </b>
+                @item.LastLogin
+            </div>
+            <div>
+                <b>
+                    Статус учётной записи: 
+                </b>
+                @item.Status
+            </div>
+            <div>
+                <b>
+                    Процент скидки: 
+                </b>
+                @item.DiscontPercent%
+            </div>
+            <div>
+                <b>
+                    Количество баллов: 
+                </b>
+                @item.Bonus
+            </div>
+            <div>
+                <b>
+                    Почта: 
+                </b>
+                @item.Email
+            </div>
+            <a class="btn btn-success mt-2" href="@Url.Action("UserOrders", "Users", new { id = @item.ID })">История заказов</a>
+            <a class="btn btn-warning mt-2" href="@Url.Action("Edit", "Users", new { id = @item.ID })">Редактировать</a>
+            <a class="btn btn-danger mt-2" href="@Url.Action("Delete", "Users", new { id = @item.ID })">Удалить пользователя</a>
+            <button onclick="javascript:detailsClose('details_@item.ID')" class="btn btn-dark mt-2">Закрыть окно</button>
+        </div>
+    }
+
+</table>

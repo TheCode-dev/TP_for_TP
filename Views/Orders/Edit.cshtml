@@ -1,0 +1,73 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model OrdersModel
+
+<form asp-controller="Orders" asp-action="Save" method="post" class="form-horizontal">
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="ID" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ID" class="form-control" value="@Model.ID" readonly="readonly" />
+            <span asp-validation-for="ID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductID" class="col-md-2 control-label">Товар</label>
+        <div class="col-md-10">
+            @Html.DropDownList("ProductID", @Model.ProductsModel, new { @class = "form-control" })
+            <span asp-validation-for="ProductID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserID" class="col-md-2 control-label">Покупатель</label>
+        <div class="col-md-10">
+            @Html.DropDownList("UserID", @Model.UsersModel, new { @class = "form-control" })
+            <span asp-validation-for="UserID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity" class="col-md-2 control-label">Количество</label>
+        <div class="col-md-10">
+            <input asp-for="Quantity" class="form-control" value="@Model.Quantity" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="col-md-2 control-label">Итоговая цена</label>
+        <div class="col-md-10">
+            <input asp-for="Price" class="form-control" value="@Model.Price" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ManagerID" class="col-md-2 control-label">Менеджер</label>
+        <div class="col-md-10">
+            @Html.DropDownList("ManagerID", @Model.ManagerModel, new { @class = "form-control" })
+            <span asp-validation-for="ManagerID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="DiscountID" class="col-md-2 control-label">Процент скидки</label>
+        <div class="col-md-10">
+            <input asp-for="DiscountID" class="form-control" value="@Model.DiscountID" />
+            <span asp-validation-for="DiscountID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Bonus" class="col-md-2 control-label">Использование бонусов</label>
+        <div class="col-md-10">
+            <input asp-for="Bonus" class="form-control" value="@Model.Bonus" />
+            <span asp-validation-for="Bonus" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-success mt-2" type="submit">Сохранить</button>
+        </div>
+    </div>
+</form>

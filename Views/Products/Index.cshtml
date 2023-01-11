@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<ProductsModel>
+
+<a class="btn btn-success mt-2 mb-2" href="@Url.Action("Edit", "Products", new { id = 0 })">Добавить продукт</a>
+<table>
+    <tr>
+        <td>ID</td>
+        <td>Тип товара</td>
+        <td>Название товара</td>
+        <td>Цена товара</td>
+        <td>Остаток</td>
+        <td>Производитель</td>
+        @*<td></td>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr onclick="javascript:detailsOpen('details_@item.ID')">
+            <td>@item.ID</td>
+            <td>@item.Type</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Count</td>
+            <td>@item.VendorName</td>
+            @*<td><a class="btn btn-warning" href="@Url.Action("ProductOrder", "Products", new { id = @item.ID })">Сделать заказ</a></td>*@
+        </tr>
+        <div id="details_@item.ID" class="container mb-5 mt-3 editor" style="display: none">
+            <div>
+                <b>
+                    Идентификатор в базе:
+                </b>
+                @item.ID
+            </div>
+            <div>
+                <b>
+                    Тип товара:
+                </b>
+                @item.Type
+            </div>
+            <div>
+                <b>
+                    Название товара:
+                </b>
+                @item.Name
+            </div>
+            <div>
+                <b>
+                    Описание товара:
+                </b>
+                @item.Description
+            </div>
+            <div>
+                <b>
+                    Цена товара:
+                </b>
+                @item.Price
+            </div>
+            <div>
+                <b>
+                    Остаток товара на складе:
+                </b>
+                @item.Count
+            </div>
+            <div>
+                <b>
+                    Последняя дата изменения:
+                </b>
+                @item.DataEdit
+            </div>
+            <div>
+                <b>
+                    Производитель:
+                </b>
+                @item.VendorName
+            </div>
+            <div>
+                <b>
+                    Категория товара:
+                </b>
+                @item.CategoryName
+            </div>
+            <div>
+                <b>
+                    Страна производства:
+                </b>
+                @item.CountriesName
+            </div>
+            <a class="btn btn-success mt-2" href="@Url.Action("ProductOrders", "Products", new { id = @item.ID })">История заказов</a>
+            <a class="btn btn-warning mt-2" href="@Url.Action("Edit", "Products", new { id = @item.ID })">Редактировать</a>
+            <a class="btn btn-danger mt-2" href="@Url.Action("Delete", "Products", new { id = @item.ID })">Удалить товар</a>
+            <button onclick="javascript:detailsClose('details_@item.ID')" class="btn btn-dark mt-2">Закрыть окно</button>
+        </div>
+    }
+
+</table>

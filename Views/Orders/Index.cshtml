@@ -1,0 +1,114 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<OrdersModel>
+
+<a class="btn btn-success mt-2 mb-2" href="@Url.Action("Edit", "Orders", new { id = 0 })">Сделать заказ</a>
+<table>
+    <tr>
+        <td>ID</td>
+        <td>Дата заказа</td>
+        <td>Продукт</td>
+        <td>Заказчик</td>
+        <td>Количество</td>
+        <td>Итоговая цена</td>
+        <td>Статус заказа</td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    @foreach (var item in Model)
+    {
+        <tr onclick="javascript:detailsOpen('details_@item.ID')" id="pricelist">
+            <td>@item.ID</td>
+            <td>@item.Date</td>
+            <td>@item.ProductName</td>
+            <td>@item.UserFirstName @item.UserLastName</td>
+            <td>@item.Quantity</td>
+            <td class="Price">@item.Price</td>
+            <td>@item.OrderStatus</td>
+            <td><a class="btn btn-warning" href="@Url.Action("Edit", "Orders", new { id = @item.ID })">Редактировать</a></td>
+            <td><a class="btn btn-danger" href="@Url.Action("Delete", "Orders", new { id = @item.ID })">Удалить</a></td>
+        </tr>
+        <div id="details_@item.ID" class="container mb-5 mt-3 editor" style="display: none">
+            <div>
+                <b>
+                    Идентификатор в базе:
+                </b>
+                @item.ID
+            </div>
+            <div>
+                <b>
+                    Дата заказа:
+                </b>
+                @item.Date
+            </div>
+            <div>
+                <b>
+                    Название товара:
+                </b>
+                @item.ProductName
+            </div>
+            <div>
+                <b>
+                    Описание товара:
+                </b>
+                @item.UserFirstName @item.UserLastName
+            </div>
+            <div>
+                <b>
+                    Количество заказанного товара:
+                </b>
+                @item.Quantity
+            </div>
+            <div>
+                <b>
+                    Итоговая цена:
+                </b>
+                @item.Price
+            </div>
+            <div>
+                <b>
+                    Продавец:
+                </b>
+                @item.ManagerFirstName @item.ManagerLastName
+            </div>
+            <div>
+                <b>
+                    Скидка:
+                </b>
+                @item.DiscountName%
+            </div>
+            <div>
+                <b>
+                    Категория товара:
+                </b>
+                @item.Bonus
+            </div>
+            <div>
+                <b>
+                    Статус выполнения:
+                </b>
+                @item.OrderStatus
+            </div>
+            <a class="btn btn-warning mt-2" href="@Url.Action("Edit", "Orders", new { id = @item.ID })">Редактировать</a>
+            <a class="btn btn-danger mt-2" href="@Url.Action("Delete", "Orders", new { id = @item.ID })">Удалить заказ</a>
+            <button onclick="javascript:detailsClose('details_@item.ID')" class="btn btn-dark mt-2">Закрыть окно</button>
+        </div>
+    }
+
+</table>
+<h2 class="text-center m-3">Итого: <span id="total">0</span></h2>
+<script>
+    let tr = document.querySelector('#pricelist');
+    let tds = tr.querySelectorAll('.Price');
+
+    let sum = 0;
+    for (let i = 0; i < tds.length; i++) {
+        sum += Number(tds[i].innerHTML);
+        total.innerHTML = sum;
+    } 
+</script>
